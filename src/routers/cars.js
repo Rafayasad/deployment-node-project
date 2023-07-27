@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const cars = require("../../src/models/cars.js");
+const ServerlessHttp = require('serverless-http');
+const app = express();
+const serverless = ServerlessHttp();
 
 // we will handle post req 
 router.post("/cars", async (req, res) => {
@@ -26,5 +29,9 @@ router.get("/cars", async (req, res) => {
         console.log(e);
     }
 })
+
+app.use('/.netlify/functions/routers/cars', router);
+
+module.exports.handler = serverless(app)
 
 module.exports = router;
