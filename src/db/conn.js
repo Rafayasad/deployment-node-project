@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const uri = "mongodb+srv://rafay:Ca903IKryEbrc6Mi@cluster0.fl5o2qh.mongodb.net/Cluster0?retryWrites=true&w=majority"
 
+// cluster db accessable from anywhere
+
 const connectDB = () => {
   return mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -14,8 +16,9 @@ const connectDB = () => {
     .catch((error) => {
       console.error('Error connecting to MongoDB:', error.message);
     });
-
 }
+
+// statically on mongoose local
 
 // mongoose.connect("mongodb://localhost:27017/pracdb")
 //   .then(() => {
